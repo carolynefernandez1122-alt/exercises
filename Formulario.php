@@ -10,12 +10,16 @@
     <?php
     // Verifica si se envió el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Recoge los valores del formulario
-        $nombre = htmlspecialchars($_POST['nombre']); // Evita inyección de HTML
+     // Recoge los datos y evita inyección HTML
+        $nombre = htmlspecialchars($_POST['nombre']);
         $correo = htmlspecialchars($_POST['correo']);
 
-        // Muestra el mensaje
-        echo "<p>Hola, <strong>$nombre</strong>, tu correo es <strong>$correo</strong>.</p>";
+        // Validar el correo
+        if (filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            echo "<p>Hola, <strong>$nombre</strong>, tu correo es <strong>$correo</strong>.</p>";
+        } else {
+            echo "<p style='color:red;'>El correo <strong>$correo</strong> no es válido. Por favor, ingresa un correo correcto.</p>";
+        }
     }
     ?>
 
