@@ -5,8 +5,6 @@
 
   Al enviar, muestra un mensaje: "Hola, [nombre], tu correo es [correo]".
 
-2. Validar email
-
   Usa filter_var() para validar que el correo ingresado sea correcto.
 
 3.Trabajar con strings
